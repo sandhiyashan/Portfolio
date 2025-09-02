@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandhiya Shanmugam – Portfolio</title>
+  <meta name="description" content="Portfolio of Sandhiya Shanmugam – Software Engineer with experience in Performance Testing, Web Development, and Automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --card: #121318;
+      --text: #e6e6e6;
+      --muted: #a8acb3;
+      --brand: #6ee7ff;
+      --brand-2: #a78bfa;
+      --accent: #22c55e;
+      --chip: #1b1e26;
+      --border: #23252c;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    [data-theme="light"]{
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #2563eb;
+      --brand-2: #7c3aed;
+      --accent: #059669;
+      --chip: #f1f5f9;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(2,6,23,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 80% -10%, rgba(103,232,249,.08), transparent 60%),
+                  radial-gradient(1000px 600px at 10% -20%, rgba(167,139,250,.09), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{max-width:1150px; margin-inline:auto; padding: 24px;}
+    header{
+      position: sticky; top: 0; z-index:10;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 10px 24px;}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px;}
+    .brand .logo{width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0c10; font-weight:900; box-shadow: var(--shadow)}
+    .nav a.btn{padding:10px 14px; border-radius:12px; background: var(--card); border:1px solid var(--border)}
+    .icon-btn{display:inline-grid; place-items:center; width:40px; height:40px; border-radius:12px; background:var(--card); border:1px solid var(--border);}
+    .row{display:grid; grid-template-columns: repeat(12, 1fr); gap:22px}
+    .hero{padding:40px 0 14px}
+    .card{background: var(--card); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow)}
+    .hero-card{grid-column: 1 / -1; display:grid; grid-template-columns: 1.2fr .8fr; gap:22px; padding:24px}
+    .hero-left{padding:8px 6px}
+    .eyebrow{display:inline-flex; gap:8px; align-items:center; font-size:12px; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--muted)}
+    h1{font-size: clamp(28px, 4vw, 44px); line-height:1.1; margin: 12px 0}
+    .subtitle{color:var(--muted); font-size: clamp(14px, 2vw, 18px)}
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--border);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 85%, transparent), var(--card));
+      text-decoration:none; font-weight:600;
+    }
+    .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand-2)); border:none; color:#0b0c10}
+    .btn:hover{transform: translateY(-1px); transition:.2s ease}
+    .hero-right{display:grid; gap:12px}
+    .quick{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .quick a{display:flex; align-items:center; gap:10px; padding:12px; border-radius:14px; background:var(--chip); border:1px solid var(--border); text-decoration:none}
+
+    section{padding: 22px 0}
+    .section-title{display:flex; align-items:center; justify-content:space-between; margin:10px 0 14px}
+    .section-title h2{margin:0; font-size: clamp(18px, 2.6vw, 26px)}
+
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:22px}
+    .col-4{grid-column: span 4}
+    .col-6{grid-column: span 6}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: 1 / -1}
+
+    /* About */
+    .about{padding:22px;}
+    .about p{margin:0; color:var(--text)}
+
+    /* Skills */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{font-size:13px; padding:8px 12px; border-radius:999px; background:var(--chip); border:1px solid var(--border)}
+    .skill-card{padding:18px}
+    .skill-card h3{margin:0 0 12px 0; font-size:16px; color:var(--muted)}
+
+    /* Experience */
+    .timeline{padding: 8px 18px 18px}
+    .item{display:grid; grid-template-columns: 1fr 3fr; gap:14px; padding:14px 0; border-bottom:1px dashed var(--border)}
+    .item:last-child{border-bottom:none}
+    .when{color:var(--muted); font-size:14px}
+    .what{font-weight:700}
+    .where{color:var(--muted)}
+    .bullets{margin:10px 0 0 0; padding-left:18px}
+
+    /* Projects */
+    .projects{padding: 12px}
+    .proj{display:flex; flex-direction:column; gap:10px; padding:16px; border-radius:16px; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, transparent), var(--card)); border:1px solid var(--border)}
+    .stack{display:flex; flex-wrap:wrap; gap:8px}
+    .stack span{font-size:12px; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--muted)}
+    .proj a{display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:600}
+
+    /* Certifications */
+    .certs{padding: 12px 18px 20px}
+    .certs ul{margin:0; padding-left:18px}
+
+    /* Education */
+    .edu{padding: 10px 18px 18px}
+    .edu .rowed{display:grid; gap:8px}
+
+    /* Contact */
+    .contact{padding: 20px}
+    .contact .gridx{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .field{display:flex; flex-direction:column; gap:8px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--chip); color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    form .btn{width:max-content}
+
+    footer{padding:24px; color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-card{grid-template-columns: 1fr;}
+      .col-4{grid-column: 1 / -1}
+      .col-6{grid-column: 1 / -1}
+      .col-8{grid-column: 1 / -1}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-size:14px; color:var(--muted); font-weight:700; letter-spacing:.08em;">PORTFOLIO</div>
+          <div style="font-size:16px; font-weight:800">Sandhiya Shanmugam</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <a class="icon-btn" href="#" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">🌗</a>
+        <a class="btn" href="mailto:sandhiya110902@gmail.com">Email</a>
+        <a class="btn" href="SANDHIYA_SHANMUGAM_Resume.pdf" download>Download Résumé</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card card">
+        <div class="hero-left">
+          <span class="eyebrow">Associate Software Engineer</span>
+          <h1>Building scalable apps and reliable systems.</h1>
+          <p class="subtitle">Technically adept engineer with hands-on experience in JMeter, LoadRunner & NeoLoad, plus a strong foundation in Java, Python, and web development. I love turning ideas into robust, measurable software.</p>
+          <div class="cta">
+            <a class="btn primary" href="tel:+919025724691">📞 Call</a>
+            <a class="btn" href="mailto:sandhiya110902@gmail.com">✉️ Contact</a>
+            <a class="btn" href="https://www.linkedin.com/in/sandhiya-shanmugam-122794228/" target="_blank" rel="noopener">in LinkedIn</a>
+            <a class="btn" href="https://github.com/SandhiyaSha" target="_blank" rel="noopener">⌂ GitHub</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="quick">
+            <a href="#projects">🚀 <strong>5+ Projects</strong></a>
+            <a href="#experience">🧪 <strong>Performance Testing</strong></a>
+            <a href="#skills">💻 <strong>Full‑stack Skills</strong></a>
+            <a href="#certifications">🎓 <strong>Certifications</strong></a>
+          </div>
+          <div class="card about">
+            <h3 style="margin:0 0 8px 0; font-size:16px; color:var(--muted)">Career Objective</h3>
+            <p>Motivated and technically adept professional with 1 year of hands‑on experience in Performance Testing. Eager to transition into a software development role to leverage coding skills, analytical thinking, and testing background to deliver scalable applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills</h2>
+      </div>
+      <div class="grid">
+        <div class="col-4 card skill-card">
+          <h3>Programming & Markup</h3>
+          <div class="chips">
+            <span class="chip">C</span>
+            <span class="chip">Java</span>
+            <span class="chip">Python</span>
+            <span class="chip">Perl</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+          </div>
+        </div>
+        <div class="col-4 card skill-card">
+          <h3>Databases & Tools</h3>
+          <div class="chips">
+            <span class="chip">MySQL</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Jenkins</span>
+            <span class="chip">Eclipse</span>
+            <span class="chip">NetBeans</span>
+          </div>
+        </div>
+        <div class="col-4 card skill-card">
+          <h3>Automation & QA</h3>
+          <div class="chips">
+            <span class="chip">Selenium</span>
+            <span class="chip">Pytest</span>
+            <span class="chip">Robot Framework</span>
+            <span class="chip">Postman</span>
+          </div>
+        </div>
+        <div class="col-6 card skill-card">
+          <h3>Performance Testing</h3>
+          <div class="chips">
+            <span class="chip">JMeter</span>
+            <span class="chip">NeoLoad</span>
+            <span class="chip">LoadRunner</span>
+            <span class="chip">Groovy (scripting)</span>
+          </div>
+        </div>
+        <div class="col-6 card skill-card">
+          <h3>Monitoring & Observability</h3>
+          <div class="chips">
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">OpenTelemetry</span>
+            <span class="chip">Dynatrace</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+      </div>
+      <div class="card timeline">
+        <div class="item">
+          <div class="when">Aug 2024 – Present</div>
+          <div>
+            <div class="what">Associate Software Engineer · Expleo Group</div>
+            <div class="where">Performance Testing – JMeter, LoadRunner, NeoLoad</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">Jan 2024 – Jul 2024</div>
+          <div>
+            <div class="what">Intern · Expleo Group</div>
+            <div class="where">Automation & Functional Testing – scripting, result analysis, QA support</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">Sep 2022 – Nov 2022</div>
+          <div>
+            <div class="what">Front‑End Developer · IBM SkillBuild</div>
+            <div class="where">Built an e‑commerce site with product listing, interactions & navigation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+      </div>
+      <div class="grid projects">
+        <div class="col-6 proj">
+          <h3 style="margin:0">VisioLearn</h3>
+          <p>Accessible learning platform for visually challenged students: read books, voice notes, quizzes, and Braille export – all in one place.</p>
+          <div class="stack">
+            <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Node.js</span><span>Express.js</span>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap">
+            <a href="https://github.com/sandhiyashan/VisioLearn" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://sandhiyashan.github.io/VisioLearn/" target="_blank" rel="noopener">Live Demo ↗</a>
+          </div>
+        </div>
+        <div class="col-6 proj">
+          <h3 style="margin:0">MediSystemX</h3>
+          <p>Hospital management platform with role‑based access (patients, doctors, admins), secure auth, scheduling, and medical records management.</p>
+          <div class="stack">
+            <span>Java Servlets</span><span>JSP</span><span>JDBC</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="stack"><span>Eclipse</span><span>MySQL</span><span>Tomcat</span></div>
+        </div>
+        <div class="col-6 proj">
+          <h3 style="margin:0">NeoLoad2JMX</h3>
+          <p>Cost‑effective converter to transform NeoLoad scripts into JMeter scripts for performance testing.</p>
+          <div class="stack"><span>Perl</span><span>Strawberry Perl</span><span>Performance Testing</span></div>
+        </div>
+        <div class="col-6 proj">
+          <h3 style="margin:0">Leave Management System</h3>
+          <p>Console‑based system to streamline employee leave requests and approvals.</p>
+          <div class="stack"><span>Core Java</span><span>SQL</span><span>Eclipse</span><span>Oracle DB</span></div>
+        </div>
+        <div class="col-12 proj">
+          <h3 style="margin:0">CAGL – Performance Testing</h3>
+          <p>Load & scalability testing for two mobile apps (Unified & Mahi). Responsibilities: planning, scripting (Groovy), execution, analysis & bottleneck identification.</p>
+          <div class="stack"><span>JMeter</span><span>Groovy</span><span>Load Testing</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="section-title">
+        <h2>Certifications</h2>
+      </div>
+      <div class="card certs">
+        <ul>
+          <li>Programming in Java – NPTEL</li>
+          <li>Python for Beginners – Udemy</li>
+          <li>Full Stack – Infosys Springboard</li>
+          <li>Master Performance Testing using JMeter – Udemy</li>
+          <li>Performance Testing using LoadRunner 12.50 – Udemy</li>
+          <li>Tricentis NeoLoad Product Consultant – Certification Exam</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+      </div>
+      <div class="card edu">
+        <div class="rowed">
+          <div>
+            <strong>B.E., Computer Science and Engineering</strong> · Knowledge Institute of Technology, Salem
+            <div class="where">Jul 2020 – Jun 2024 · CGPA: 8.34 / 10</div>
+          </div>
+          <div>
+            <strong>12th Standard</strong> · Swamy Vivekananda MHSS
+            <div class="where">2018 – 2020 · Percentage: 82%</div>
+          </div>
+          <div>
+            <strong>10th Standard</strong> · Government Girls Higher Secondary School
+            <div class="where">Percentage: 94%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+      </div>
+      <div class="card contact">
+        <div style="margin-bottom:12px">I’m open to software development and QA opportunities. Let’s build something great.</div>
+        <div class="gridx">
+          <div class="field">
+            <label>Phone</label>
+            <input value="+91 9025724691" readonly />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input value="sandhiya110902@gmail.com" readonly />
+          </div>
+        </div>
+        <div class="cta" style="margin-top:16px">
+          <a class="btn" href="mailto:sandhiya110902@gmail.com">Write an Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/sandhiya-shanmugam-122794228/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="btn" href="https://github.com/SandhiyaSha" target="_blank" rel="noopener">Follow on GitHub</a>
+          <a class="btn" href="http://www.mywebsite.com/" target="_blank" rel="noopener">Personal Website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Sandhiya Shanmugam · Built with plain HTML/CSS · <a href="#" id="backToTop">Back to top ↑</a>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved){ root.setAttribute('data-theme', saved); }
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', (e)=>{
+      e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'});
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
